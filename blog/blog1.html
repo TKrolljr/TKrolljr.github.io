@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>CSS Template</title>
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Montserrat;
+}
+
+/* Style the header */
+header {
+	margin: auto;
+  background-color: #388c3c;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+
+/* Create two columns/boxes that floats next to each other */
+
+
+article {
+
+  margin: auto;
+  padding: 20px;
+  width: 80%;
+  background-color: #f1f1f1;
+}
+
+/* Clear floats after the columns */
+section::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the footer */
+footer {
+  background-color: #388c3c;
+   width: 80%;
+  padding: 10px;
+    margin: auto;
+  text-align: center;
+  color: white;
+}
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media (max-width: 600px) {
+  nav, article {
+    width: 100%;
+    height: auto;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Cifar10 Classification</h1>
+</header>
+
+<section>
+
+  
+  <article>
+    <h2>Cifar10</h2>
+    <p>Cifar10 is a well-known set of images used to proof-of-concept image classifiers. It consists of rgb images 32x32 in size, each of which contains one of 10 classes within the image: 
+airplane, 									
+automobile, 									
+bird, 									
+cat, 								
+deer, 									
+dog, 								
+frog, 										
+horse, 										
+ship, and										
+truck.</p> <p>It is the goal of any model then to accurately predict which of the 10 classes a given image contains.</p>
+
+<h2>The Models</h2>
+<p>We began with the tutorial model from pytorch's 60 minute blitz: <a href="https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html">cifar10_tutorial</a></p>
+<p>It achieves a 52% accuracy after 2 epochs. As the tutorial states, that's already clearly significantly better than random guessing.</p>
+<h1>Personal Improvements</h1>
+<p> Simply adding more linear layers to the model had negligible effect on the model's accuracy, while they did have noticeable impact on the train time. Rather, increasing the number of epochs - adding additional passes over the data - did still yield benefits.</p>
+<p>At 10 epochs the tutorial's model achieved an accuracy of 63%: a significant improvement. This of course costs roughly 5 times the computing time the original 2 epochs took, but this remains faily reasonable at under 15 minutes, and the 10% gain is well worth it.</p>
+<h1>Additional Convolution</h1>
+<p>I then set out ot add additional convolution layers, as described <a href="https://zhenye-na.github.io/2018/09/28/pytorch-cnn-cifar10.html">here</a> for example. I adjusted the layers to reduce training time, and in my final chosen model i achieved an accuracy of 78%</p>
+<p><a href="https://colab.research.google.com/drive/1hV4EpRKfy9fK2_0PlqsClThb7hgSrRDv#scrollTo=38eJpEiJAwWf">Link</a> to the final chosen model's notebook.</p>
+<h2>Additional Notes</h2>
+<p> I should note here that far better accuracies are not only possible, but freely available. Pytorch itself has several pretrained models (their resnet implementation for example). While it is entirely possible to load these models (they're even pretrained!) and get a better accuracy, I felt this is not entirely in the spirit of the assignment, and so I didn't do this. An example of some implementations of this is <a href="https://github.com/kuangliu/pytorch-cifar">here</a> for example</p>
+
+  </article>
+</section>
+
+<footer>
+  <p>Footer</p>
+</footer>
+
+</body>
+</html>
