@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>CSS Template</title>
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Montserrat;
+}
+
+/* Style the header */
+header {
+	margin: auto;
+  background-color: #388c3c;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+
+/* Create two columns/boxes that floats next to each other */
+
+
+article {
+
+  margin: auto;
+  padding: 20px;
+  width: 80%;
+  background-color: #f1f1f1;
+}
+
+/* Clear floats after the columns */
+section::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the footer */
+footer {
+  background-color: #388c3c;
+   width: 80%;
+  padding: 10px;
+    margin: auto;
+  text-align: center;
+  color: white;
+}
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media (max-width: 600px) {
+  nav, article {
+    width: 100%;
+    height: auto;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Polynomial Regression</h1>
+</header>
+
+<section>
+
+  
+  <article>
+    <h2>Polynomial Regression</h2>
+    <p>Polynomial Regression uses a polynomial to model some unknown objective function by choosing the coefficients of the polynomial to minimize some error (Root Mean Squared in this notebook)</p> <p>However, the degree of the polynomial of course also affects the performance of the regression. Hence, the first parts of this notebook seeks to explore the error of different degree regressions when estimating a noisy polynomial.</p><p><a href="https://colab.research.google.com/drive/1BOG2eKF0iWibn_CECn8RKlWTi2DJYtye?usp=sharing">The Jupyter Notebook</a></p>
+
+<h2>Over/Underfitting</h2>
+<p>The first code cell clearly illustrates both over and underfitting:</a></p>
+<p>The 0 and 1 degree regressions clearly cannot come close to approximating the sinusoid, as it isn't linear (clearly). Furthermore, the 9th degree polynomial exhibits overfitting, as evidenced in code cell 2, where its test error is shown to be greater than the early degrees!</p>
+<p>Specifically then, overfitting is when a model seeks to perfectly incorporate the elements of the training set, which causes the test set and true data to be less well modelled. As we see here, this can occur with a high degree polynomial regression which will touch (or nearly touch) all data points. This is undesirable, especially given our noisy objective function.
+Conversely, underfitting is cause by the model not properly incorporating the data. Here, we see it when the degree is not high enough to 'bend' our model to incorporate the data points. The model is not complex enough to represent the data.</p>
+<h1>Regularization</h1>
+<p> This notebook also explores the concept of L2 regularization, along with how differing values of lambda (sometimes alpha) affect how well the model represents the data.</p>
+
+<h1>References</h1>
+
+<p><a href="https://machinelearningmastery.com/what-is-bayesian-optimization/">Bayes Optimization from which I lift plotting code</a></p>
+<p><a href="https://stats.stackexchange.com/questions/294890/polynomial-regression-in-python">poly regression using sklearn</a></p>
+
+<p>Specifically, adding the plotting code and proper python functions for our objective function is what I've improved on the stackexchange reference</p>
+
+
+
+  </article>
+</section>
+
+<footer>
+  <p>Footer</p>
+</footer>
+
+</body>
+</html>
