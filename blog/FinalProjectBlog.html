@@ -77,7 +77,7 @@ right reader. Traditional tools ‘are based on weak proxies of text decoding’
 machine learning based approaches for this problem, they are often proprietary, and thus not transparent 
 to the public. In fact, the goal of the competition (link in the references), and thus my project, is to fix this problem.</p> 
 
-<a href="blog/ProjectProposal_5334.pdf">The Full Proposal</a>.
+<a href="ProjectProposal_5334.pdf">The Full Proposal</a>.
 
 <h2>The Model</h2>
 <p>The actual model is relatively simple (though it's made from scratch). It's an implementation of k-nearest-neighbors: <a href="https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm">wikipedia link</a></p>
@@ -92,17 +92,17 @@ to the public. In fact, the goal of the competition (link in the references), an
 <p>3. We vectorize the text.</p>
 <p>		3a. We gather the average word count of our text</p>
 <picture>
-<img src="images/avgWordCount.png" alt="senlen" style="width:auto;">
+<img src="../images/avgWordCount.png" alt="senlen" style="width:auto;">
 </picture>
 <p>		3b. We gather the average sentence length of our text</p>
 <picture>
-<img src="images/avgSentenceLength.png" alt="wordcount" style="width:auto;">
+<img src="../images/avgSentenceLength.png" alt="wordcount" style="width:auto;">
 </picture>
 <p>4. We plot our vector in space</p>
 <p>5. We find the average of 12 nearest neighbors</p>
 <p>6. We output a readability score</p>
 <picture>
-<img src="images/kNN.png" alt="Full Model" style="width:auto;">
+<img src="../images/kNN.png" alt="Full Model" style="width:auto;">
 </picture>
 
 <h1>Challenges/Improvements</h1>
