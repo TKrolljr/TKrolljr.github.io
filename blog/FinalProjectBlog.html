@@ -77,33 +77,41 @@ right reader. Traditional tools ‘are based on weak proxies of text decoding’
 machine learning based approaches for this problem, they are often proprietary, and thus not transparent 
 to the public. In fact, the goal of the competition (link in the references), and thus my project, is to fix this problem.</p> 
 
+<a href="blog/ProjectProposal_5334.pdf">The Full Proposal</a>.
+
 <h2>The Model</h2>
 <p>The actual model is relatively simple (though it's made from scratch). It's an implementation of k-nearest-neighbors: <a href="https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm">wikipedia link</a></p>
 <p>Most simply, first we vectorize our training data. Then, whenever our goal is to classify (or in my case regress, more later) a new data point, we simply select the k nearest data points and have them vote to determine the new data point's class. In my case, I had each of the k neighbors contribute equally to an average readability score, and then selected the average. Since the model is simple, the interesting parts are as follows: determining how to vectorize our input, and fitting for the best K</p>
 <h1>Fitting for K</h1>
 <p> How many neighbors should contribute to our novel data point's score is an important question. Luckily, kNN has the advantage of being incredibly quick to train (which is the major strength of my implementation vs. some deep neural net). Hence, it is quite easy to perform a grid search for k, which is what I did. At first, I found k=1 to be the best. However, I quickly realized I was searching on my training set, and a proper search on the test set found k=12 to be, on average, the best.</p>
 <h1>Vectorizing the input</h1>
-<p> The final deicison was how best ot vectorize my input. The goal is of course to extract features from the text which best predict how difficult a passage is to read. In my search, I found two features to work the best: average word count, and average sentence length. Unsurprisingly, these metrics have been used before in readability metrix, e.g. the <a href="https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests">Flesch-Kincaid metrix</a>. There, similar features are used in a simple linear combination. Thus, I felt confident that my choice for feature selection would be reasonable.</p>
+<p> The final deicison was how best ot vectorize my input. The goal is of course to extract features from the text which best predict how difficult a passage is to read. In my search, I found two features to work the best: average word count, and average sentence length. Unsurprisingly, these metrics have been used before in readability metrix, e.g. the <a href="https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests">Flesch-Kincaid metric</a>. There, similar features are used in a simple linear combination. Thus, I felt confident that my choice for feature selection would be reasonable.</p>
 <h1>The Model, step by step</h1>
 <p>1. We take in a single text excerpt as a data point.</p>
 <p>2. We clean the text.</p>
 <p>3. We vectorize the text.</p>
 <p>		3a. We gather the average word count of our text</p>
 <picture>
-<img src="images/avgSentenceLength.png" alt="senlen" style="width:auto;">
+<img src="images/avgWordCount.png" alt="senlen" style="width:auto;">
 </picture>
 <p>		3b. We gather the average sentence length of our text</p>
 <picture>
-<img src="images/avgWordCount.png" alt="wordcount" style="width:auto;">
+<img src="images/avgSentenceLength.png" alt="wordcount" style="width:auto;">
 </picture>
 <p>4. We plot our vector in space</p>
 <p>5. We find the average of 12 nearest neighbors</p>
 <p>6. We output a readability score</p>
 <picture>
-<img src="images/kNN.png" alt="wordcount" style="width:auto;">
+<img src="images/kNN.png" alt="Full Model" style="width:auto;">
 </picture>
 
+<h1>Challenges/Improvements</h1>
+<p>As mentioned above, the greatest challenge was chosing the vectorization method, as well as keeping the test and train datasets straight. While I think there are better vectorization methods that truly leverage the available computational power, the resemblance of mine to earlier readability measures is elegant, and sets it apart from the other submitted notebooks, along with the incredibly quick training speed that kNN brings with it.</p>
 
+<h1>Links and References</h1>
+<p><a href="https://www.kaggle.com/tobiasgabrielkroll/readability">Kaggle Noteboook</a></p>
+<p><a href="https://www.kaggle.com/c/commonlitreadabilityprize">Kaggle Competition</a></p>
+<p><a href="https://www.kaggle.com/hannes82/commonlit-readability-roberta-inference">The current top public submission</a></p>
 
 
   </article>
@@ -115,3 +123,4 @@ to the public. In fact, the goal of the competition (link in the references), an
 
 </body>
 </html>
+
